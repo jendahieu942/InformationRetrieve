@@ -27,27 +27,42 @@ class RestaurantSpider(scrapy.Spider):
 
         # collect only do_an, do_uong, trang_mieng, ...
         for index_type in range(1, 8):
-            type_button = self.main_window.find_element_by_css_selector(
-                '#box-delivery > div.n-header > div.nav-box > ul > li:nth-child(%s)' % str(index_type))
-            type_button.click()
+            # Click to expected section
+            css_selector = '#box-delivery > div.n-header > div.nav-box > ul > li:nth-child(%i) > a' % index_type
+            try:
+                type_button = self.main_window.find_element_by_css_selector(css_selector)
+                type_button.click()
+            except (NoSuchElementException, WebDriverException):
+                print("ERROR Cant not click to next section. Refreshing page")
+                self.main_window.refresh()
+                try:
+                    WebDriverWait(self.main_window, 30) \
+                        .until(EC.element_to_be_clickable((By.CSS_SELECTOR, css_selector)))
+                    type_button = self.main_window.find_element_by_css_selector(css_selector)
+                    type_button.click()
+                except (TimeoutException, WebDriverException):
+                    print('Error appear. Try to other section')
+                    continue
             # Wait until page loaded
             for count_side in range(50):
                 try:
-                    element_present = EC.presence_of_all_elements_located(
-                        (By.XPATH, '//*[@id="box-delivery"]/div[2]/ul/li[10]/div[1]/a[1]/img'))
+                    xpath_next = '//*[@id="box-delivery"]/div[2]/ul/li[1]/div[1]/a[1]/img'
+                    element_present = EC.presence_of_all_elements_located((By.XPATH, xpath_next))
                     WebDriverWait(self.main_window, 30).until(element_present)
                     self.getRestaurant(self.main_window.page_source)
                 except TimeoutException:
                     print("Time out while wait page loaded")
+
                 # next to other side
                 try:
-                    next_side = self.main_window.find_element_by_css_selector(
-                        '#box-delivery > div.n-listitems > i.li-page.fa.fa-angle-right.ng-scope.ng-enter-prepare')
+                    css_next = '#box-delivery > div.n-listitems > i.li-page.fa.fa-angle-right.ng-scope.ng-enter-prepare'
+                    element_present = EC.presence_of_all_elements_located((By.CSS_SELECTOR, css_next))
+                    WebDriverWait(self.main_window, 30).until(element_present)
+                    next_side = self.main_window.find_element_by_css_selector(css_next)
                     next_side.click()
-                except (NoSuchElementException, WebDriverException) as e:
+                except (NoSuchElementException, WebDriverException, TimeoutException) as e:
                     print("No side more")
-                    print(e)
-                    pass
+                    break
         self.main_window.close()
         self.rest_window.close()
 
@@ -57,7 +72,7 @@ class RestaurantSpider(scrapy.Spider):
         offset_scroll = 0
         while True:
             res = Selector(text=self.rest_window.page_source)
-            time.sleep(1.5)
+            time.sleep(0.5)
             menu_div = res.xpath('//*[@id="restaurant-item"]/div/div')
             menu_list = menu_div.css('.item-restaurant-row')
             for meal in menu_list:
@@ -72,13 +87,13 @@ class RestaurantSpider(scrapy.Spider):
                     menu[name] = item
 
             # Scroll down
-            self.rest_window.execute_script("window.scrollBy(0, 2000);")
+            self.rest_window.execute_script("window.scrollBy(0, 1800);")
             if offset_scroll >= last_scroll_height:
                 new_scroll_height = self.rest_window.execute_script("return document.body.scrollHeight")
                 if new_scroll_height == last_scroll_height:
                     break
                 last_scroll_height = new_scroll_height
-            offset_scroll += 2000
+            offset_scroll += 1800
 
         return menu
 
@@ -107,9 +122,7 @@ class RestaurantSpider(scrapy.Spider):
             except TimeoutException:
                 print("Time out while wait menu load")
                 continue
-            tag = Selector(text=self.rest_window.page_source) \
-                .css('.kind-restaurant::text') \
-                .get()
+            tag = Selector(text=self.rest_window.page_source).css('.kind-restaurant::text').get()
             menu = self.parseMenu()
 
             # add to dict
