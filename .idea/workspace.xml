@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec55144e-42a9-492e-bdf7-2aa4582d04a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gui/search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/static/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sync/mongo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sync/sync-restaurant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler/crawler/spiders/restaurant.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/crawler/spiders/restaurant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sync/elastic.py" beforeDir="false" afterPath="$PROJECT_DIR$/sync/elastic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/maintest.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/maintest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +95,11 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -185,6 +181,7 @@
         <option value="$PROJECT_DIR$/gui/search.py" />
         <option value="$PROJECT_DIR$/gui/static/search.js" />
         <option value="$PROJECT_DIR$/gui/templates/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -395,17 +392,17 @@
       <workItem from="1557739341780" duration="3240000" />
       <workItem from="1557746492120" duration="2610000" />
       <workItem from="1557763452655" duration="8601000" />
-      <workItem from="1557807694039" duration="1898000" />
+      <workItem from="1557807694039" duration="2985000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117374000" />
+    <option name="totallyTimeSpent" value="118461000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1313" height="743" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33543804" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33543804" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -419,7 +416,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50039464" side_tool="true" visible="true" weight="0.26384366" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960536" visible="true" weight="0.26384366" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960536" visible="true" weight="0.26384366" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49960536" weight="0.56188923" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -617,7 +614,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
