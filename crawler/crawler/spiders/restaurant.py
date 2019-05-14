@@ -17,7 +17,6 @@ class RestaurantSpider(scrapy.Spider):
     start_urls = ["https://www.foody.vn/ha-noi"]
 
     def __init__(self):
-        # self.driver = webdriver.Chrome('/usr/local/share/chromedriver/chromedriver')
         self.main_window = webdriver.Chrome('/usr/local/share/chromedriver/chromedriver')
         self.rest_window = webdriver.Chrome('/usr/local/share/chromedriver/chromedriver')
         self.mongoUtils = MongoUtils('hieutv', 'info_retrieve')
@@ -133,6 +132,7 @@ class RestaurantSpider(scrapy.Spider):
             res_detail['address'] = address
             res_detail['tag'] = tag
             res_detail['menu'] = [meal for meal in sorted(menu.values(), key=lambda x: x['name'])]
+            res_detail['date_time'] = time.strftime('%Y-%m-%d', time.gmtime()).replace('-', '')
             self.mongoUtils.insert_one(res_detail)
 
 

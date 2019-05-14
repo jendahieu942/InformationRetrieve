@@ -24,7 +24,19 @@
 # mongo = MongoUtils('hieutv', 'info_retrieve')
 # items = mongo.findByID(key)
 # print(items.count())
+import time
+from datetime import datetime
+
 from sync.elastic import ElasticUtils, QueryBuilders, QueryBuilder
 
-elastic = QueryBuilders()
-print(elastic.boolQuery().termQuery('test2', 'hieutv').getQuery())
+query = QueryBuilders()
+mainQuery = query.boolQuery() \
+    .shouldQuery(QueryBuilder.match_phrase("name", "cơm nhà")) \
+    .getQuery()
+elastic = ElasticUtils('localhost', 'information-retrieve')
+result = elastic.search(mainQuery)
+print(result)
+
+print(time.strftime('%Y-%m-%d', time.gmtime()).replace('-', ''))
+# print(str(datetime.now()).split(' ')[0].replace('-', ''))
+#

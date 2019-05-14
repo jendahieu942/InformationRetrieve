@@ -1,11 +1,15 @@
+import json
+import time
+
 from elasticsearch import Elasticsearch
 
 
 class ElasticUtils:
-    def __init__(self, hosts, port, index):
-        self.es = Elasticsearch([{'host': hosts, 'port': port}])
-        self.index = index
-        self.doc_type = 'foody'
+    def __init__(self, hosts, index=None):
+        today = time.strftime('%Y-%m-%d', time.gmtime()).replace('-', '')
+        self.es = Elasticsearch([{'host': hosts, 'port': 9200}])
+        self.index = index if index is not None else 'information-retrieve-' + today
+        self.doc_type = 'restaurants'
 
     def insertOne(self, _doc, _id):
         res = self.es.index(index=self.index, doc_type=self.doc_type, body=_doc, id=_id)
@@ -39,7 +43,8 @@ class QueryBuilders:
         return self
 
     def getQuery(self):
-        return self.query
+        queryStr = json.dumps(self.query)
+        return queryStr
 
 
 class QueryBuilder:
