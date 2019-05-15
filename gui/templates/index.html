@@ -5,12 +5,32 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script type="text/javascript" src="{{ url_for('static', filename = 'search.js') }}"></script>
+    <title>Search for Information Retrieve</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<input type="button" onclick="say_hello()" value="Say Hello"/>
+<div class="container">
+    <div class="input-group mb-3">
+        <input id="simple-search-input" type="text" class="form-control" placeholder="Search everything . . ." aria-label="Simple search">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="simple-search-btn">
+                Search
+            </button>
+        </div>
+    </div>
+</div>
 
-<p>{{result}}</p>
+{#javascript#}
+<script src="{{ url_for('static', filename='javascript/search.js') }}"></script>
 </body>
 </html>
