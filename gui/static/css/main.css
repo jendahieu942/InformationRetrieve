@@ -1,3 +1,18 @@
 body {
-    padding-top: 50px;
+    padding-top: 10px;
+}
+
+.search-on-result {
+    padding-top: 5px;
+}
+
+.search-on-index {
+    padding-top: 270px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.loading-div {
+    color: white;
+    text-align: center;
 }

@@ -3,7 +3,7 @@
 {% include 'header.html' %}
 <body>
 <div class="container">
-    <div class="input-group mb-3 search-on-index">
+    <div class="input-group mb-3 search-on-result">
         <input id="simple-search-input" type="text" class="form-control" placeholder="Search everything . . ."
                aria-label="Simple search">
         <div class="input-group-append">
@@ -15,6 +15,9 @@
     <div class="loading-div">
         <span class="spinner-border spinner-border-sm"></span>
     </div>
+    <p class="result-display">
+        {{ result }}
+    </p>
 </div>
 <!-- Javascripy handler -->
 <script src="{{ url_for('static', filename='javascript/search.js') }}"></script>
